@@ -1,7 +1,8 @@
 # Terraform files
 .terraform
 terraform.tfvars
-*.tfstate*
+*.tfstate
+*.tfstate.*
 
 # OS X files
 .history
