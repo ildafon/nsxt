@@ -1,4 +1,4 @@
-# update on Mac, 2020.3.3
+# update on Windows, 2020.3.3
 
 provider "nsxt" {
   host                  = var.nsx_manager
