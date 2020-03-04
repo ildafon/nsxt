@@ -14,6 +14,9 @@ provider "nsxt" {
 locals {
     provisioned_by_scope = "provisioned_by"
     provisioned_by = "terraform-yanjun"
+    t1_display_name = "tf-t1-01"
+    ls_display_name = "tf-ls-01"
+    t1_downlink_ip_address = "192.168.206.1/24"
 }
 
 
@@ -31,7 +34,7 @@ data "nsxt_transport_zone" "tz" {
 
 resource "nsxt_logical_tier1_router" "tier1" {
   description                 = "RTR1 provisioned by Terraform"
-  display_name                = "tf-t1-01"
+  display_name                = local.t1_display_name
   failover_mode               = "PREEMPTIVE"
   edge_cluster_id             = data.nsxt_edge_cluster.edge_cluster.id
   enable_router_advertisement = true
@@ -48,7 +51,7 @@ resource "nsxt_logical_tier1_router" "tier1" {
 resource "nsxt_logical_switch" "ls" {
   admin_state       = "UP"
   description       = "LS1 provisioned by Terraform"
-  display_name      = "tf-ls-01"
+  display_name      = local.ls_display_name
   transport_zone_id = data.nsxt_transport_zone.tz.id
   replication_mode  = "MTEP"
 
@@ -93,7 +96,7 @@ resource "nsxt_logical_router_downlink_port" "downlink_port" {
   description                   = "TIER1_PORT1 provisioned by Terraform"
   logical_router_id             = nsxt_logical_tier1_router.tier1.id
   linked_logical_switch_port_id = nsxt_logical_port.ls_port.id
-  ip_address = "192.168.205.1/24"
+  ip_address = local.t1_downlink_ip_address
 
   tag {
     scope = local.provisioned_by_scope
