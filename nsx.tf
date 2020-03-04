@@ -1,4 +1,4 @@
-# update on Windows, 2020.3.4, Yanjun Hu
+# Update on Windows, 2020.3.4, Yanjun Hu
 
 provider "nsxt" {
   host                  = var.nsx_manager
