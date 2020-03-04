@@ -11,14 +11,6 @@ provider "nsxt" {
   retry_on_status_codes = [429]
 }
 
-output "t1_id" {
-    value = nsxt_logical_tier1_router.tier1.id
-}
-
-output "ls_id" {
-    value = nsxt_logical_switch.ls.id
-}
-
 data "nsxt_logical_tier0_router" "tier0" {
   display_name = "Tier-0-gateway-01"
 }
@@ -101,4 +93,12 @@ resource "nsxt_logical_router_downlink_port" "downlink_port" {
     scope = local.provisioned_by_scope
     tag   = local.provisioned_by
   }
+}
+
+output "t1_id" {
+    value = nsxt_logical_tier1_router.tier1.id
+}
+
+output "ls_id" {
+    value = nsxt_logical_switch.ls.id
 }
