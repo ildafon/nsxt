@@ -11,6 +11,10 @@ provider "nsxt" {
   retry_on_status_codes = [429]
 }
 
+output "t1_id" {
+    value = nsxt_logical_tier1_router.tier1.id
+}
+
 locals {
     provisioned_by_scope = "provisioned_by"
     provisioned_by = "terraform-yanjun"
