@@ -10,11 +10,7 @@ provider "nsxt" {
 }
 
 module "t1" {
-    source = "modules/t1"
-    
-    spec.provisioned_by_scope = "provisioned_by"
-    spec.provisioned_by = "terraform-yanjun"
-    spec.t1_display_name = "tf-t1-01"
-    spec.ls_display_name = "tf-ls-01"
-    spec.t1_downlink_ip_address = "192.168.206.1/24"
+    source = "../modules/t1"
+
+    spec = var.t1_spec
 }
