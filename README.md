@@ -8,4 +8,4 @@ terraform apply
 terraform destroy
 ```
 ## Diagram
-![Vault architecture](https://github.com/hashicorp/terraform-aws-vault/blob/master/_docs/architecture.png?raw=true)
+![Vault architecture](docs/diagram.png)
