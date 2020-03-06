@@ -28,8 +28,8 @@ resource "nsxt_logical_switch" "ls" {
 }
 
 resource "nsxt_logical_port" "ls_port" {
-    admin_state = "UP"
-    logical_switch_id = nsxt_logical_switch.ls.id
+  admin_state = "UP"
+  logical_switch_id = nsxt_logical_switch.ls.id
 
   tag {
     scope = var.spec.provisioned_by_scope
